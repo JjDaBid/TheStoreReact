@@ -1,8 +1,11 @@
+import ItemListContainer from "../components/ItemListContainer"
 import Layout from "../components/layout"
 
 const Home = () => {
   return (
-    <Layout>Home</Layout>
+    <Layout>      
+      <ItemListContainer />  
+    </Layout>
   )
 }
 export default Home

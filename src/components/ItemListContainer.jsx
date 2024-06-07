@@ -1,12 +1,34 @@
-// eslint-disable-next-line react/prop-types
-const ItemListContainer = ({ greeting }) => {
-    return (
-      <div className="flex flex-col items-center mt-16 bg-gray-100">
+import { useEffect, useState } from "react";
+import ItemDetailContainer from "./ItemDetailContainer";
+import { getItems } from "../data/data";
+import { useParams } from "react-router-dom";
 
-        <h1 className="text-2xl font-bold text-center mt-6">Greeting</h1>
-        <p className="text-lg mt-8 font-bold text-center text-gray-400">{ greeting }</p>
-      </div>
+// eslint-disable-next-line react/prop-types
+function ItemListContainer () {
+
+  const [items, setItems] = useState(null);
+
+  const { idCategory } = useParams()
+
+  useEffect(() => {
+    getItems(idCategory)
+      .then(response => setItems(response))
+      .catch(err => setItems(err))     
+  }, [idCategory])
+
+    return (  
+      <>        
+        <h1 className='mb-14 font-semibold text-lg'>{idCategory?<>Categoría: {idCategory}</>:<></>}</h1>
+      
+        <div className='grid gap-8 grid-cols-4 w-full max-w-screen-lg'>
+            {
+            items?.map(item => (
+              <ItemDetailContainer key={item.id} data={item}/>
+            )) 
+          }
+        </div>
+      </>
     );
-  };
+  }
   
   export default ItemListContainer;

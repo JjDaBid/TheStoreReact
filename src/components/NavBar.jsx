@@ -38,12 +38,20 @@ const NavBar = () => {
               onMouseEnter={showDropdown}
               onMouseLeave={hideDropdown}
             >
-              <li className="px-4 py-2 hover:bg-gray-100"><NavLink to='/ropa'>Ropa</NavLink></li>
-              <li className="px-4 py-2 hover:bg-gray-100"><NavLink to='/calzado'>Calzado</NavLink></li>
-              <li className="px-4 py-2 hover:bg-gray-100"><NavLink to='/camisetas'>Camisetas</NavLink></li>
-              <li className="px-4 py-2 hover:bg-gray-100"><NavLink to='/accesorios'>Accesorios</NavLink></li>
+              <li className="px-4 py-2 hover:bg-gray-100"><NavLink to='/category/Vestidos-Dama'>Vestidos de Dama</NavLink></li>
+              <li className="px-4 py-2 hover:bg-gray-100"><NavLink to='/category/Chaquetas'>Chaquetas</NavLink></li>
+              <li className="px-4 py-2 hover:bg-gray-100"><NavLink to='/category/Calzado'>Calzado</NavLink></li>
+              <li className="px-4 py-2 hover:bg-gray-100"><NavLink to='/category/Camisetas'>Camisetas</NavLink></li>
+              <li className="px-4 py-2 hover:bg-gray-100"><NavLink to='/category/Lenceria'>Lencería</NavLink></li>
+              <li className="px-4 py-2 hover:bg-gray-100"><NavLink to='/category/Joyeria'>Joyeria</NavLink></li>   
+              <li className="px-4 py-2 hover:bg-gray-100"><NavLink to='/category/Accesorios'>Accesorios</NavLink></li>              
             </ul>
           )}
+        </li>
+        <li className='relative'>
+          <NavLink to='/contact'>
+            Contacto
+          </NavLink>
         </li>
       </ul>
 
