@@ -702,6 +702,33 @@ export const Data = [
         "price": 18000000,
         "stock": 1
       },
+      {
+        "id": 78,
+        "category": "Vestidos-Dama",
+        "description": "Entra en la frescura y la elegancia del verano con nuestro hermoso vestido corto blanco con estampados de flores beige. Este encantador vestido captura la esencia misma de la temporada, combinando la pureza del blanco con la suavidad y la delicadeza de los estampados florales. \nEl tono blanco del vestido evoca la luminosidad del sol de verano, creando una sensación de frescura y claridad. Los estampados de flores beige añaden un toque de calidez y romanticismo, evocando la belleza de los días soleados y las suaves brisas estivales. \nEl diseño corto del vestido es perfecto para disfrutar del clima cálido y las actividades al aire libre, mientras que la silueta favorecedora realza tus curvas con elegancia y estilo. Los detalles sutiles, como el escote suave y los acabados delicados, añaden un toque de feminidad y sofisticación. \nEste vestido es ideal para una variedad de ocasiones veraniegas, desde paseos por la playa hasta cenas al aire libre y fiestas en el jardín. Combínalo con sandalias cómodas y accesorios sencillos para un look fresco y chic que te hará destacar con estilo en cualquier situación. \nPrepárate para disfrutar al máximo del verano con nuestro encantador vestido corto blanco con estampados de flores beige, y deja que tu belleza brille con el esplendor del verano.",
+        "image": "https://mmstorecolombia.co/wp-content/uploads/2024/05/BANNER-PAGINA-WEB-2024-05-08T144347.187.png",
+        "title": "Vestido Corto Victoria",
+        "price": 269000,
+        "stock": 2
+      },
+      {
+        "id": 79,
+        "category": "Calzado",
+        "description": "Lleva en tus pies los icónicos patrones de corazón mundialmente famosos de James Goldcrown! Skechers nos presenta este modelo Uno: las zapatillas de deporte para mujer Spread the Love, un producto de la colaboración Skechers x JGoldcrown. En su diseño presenta parte superior de cuero artificial y tela de malla, materiales que los convierten en un calzado único y cómodo para un uso durante todo el día. Las piezas de piel sintética contribuyen al diseño y la durabilidad del calzado, mientras que las piezas de malla ayudan a que tus pies respiren. Poseen plantilla Air Cooled Memory Foam que proporciona una amortiguación superior y te ofrece una comodidad sin igual. Cuentan con entresuela Skech Air, que minimiza los efectos de cada impacto y consiste en pequeños cojines de aire que son visibles desde el exterior del zapato. Es el complemento perfecto para tu estilo cotidiano.",
+        "image": "https://freeportstore.vteximg.com.br/arquivos/ids/2864722-1000-1000/tdusfo6-1.jpg?v=638324779223670000",
+        "title": "Tenis Casuales Mujer Skechers Tdus Rosa",
+        "price": 440000,
+        "stock": 1
+      },
+      {
+        "id": 80,
+        "category": "Calzado",
+        "description": "Aventúrate con la comodidad y el soporte resistente con este modelo de la marca Skechers Skech-Air Extreme 2.0 - Classic Vibe. Este calzado con cordones cuenta con una parte superior de malla tejida, plana, atlética y de material sintético que te aporta mucha flexibilidad y frescura al caminar. Presenta una plantilla acolchada Air-Cooled Memory Foam y una entresuela visible con cámara de aire Skech-Air que te aporta mayor soporte y confort durante todo el día. Es el perfecto balance entre bienestar y estilo.",
+        "image": "https://freeportstore.vteximg.com.br/arquivos/ids/2769074-1000-1000/td1xf4f-1.jpg?v=638237236388630000",
+        "title": "Tenis Casuales Mujer Skechers TD1X Blanco",
+        "price": 385000,
+        "stock": 1
+      },
       
 ]
 
