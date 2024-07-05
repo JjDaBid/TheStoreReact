@@ -1,23 +1,23 @@
 /* eslint-disable react/prop-types */
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Layout from "./layout";
-import { useEffect, useState } from "react";
 import { getItemById } from "../data/data";
+import { ShopContext } from "../context/shopContext";
+import Layout from "./layout";
 
 const Product = () => {
-    const { idItem } = useParams();
+
     const [item, setItem] = useState(null);
+    const { idItem } = useParams();    
+    const { addToCart } = useContext(ShopContext)
 
-    console.log("idItem en Product", idItem);
-
-    useEffect(() => {
+        useEffect(() => {
         getItemById(idItem)
             .then((res) => setItem(res))
             .catch((err) => console.error("Error al obtener el ítem:", err));
     }, [idItem]);
  
-    console.log("Item en Product", item);
-
+    
     return (
         <Layout>
             {item && (
@@ -43,6 +43,7 @@ const Product = () => {
                                 <button
                                     type="submit"
                                     className="w-full py-3 bg-slate-700 text-white font-semibold rounded hover:bg-slate-900 hover:text-white transition-colors"
+                                    onClick={() => addToCart(item)}
                                 >
                                     Agregar al Carrito
                                 </button>

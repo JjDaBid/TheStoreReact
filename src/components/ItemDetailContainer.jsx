@@ -2,9 +2,7 @@ import { Link } from "react-router-dom"
 import CardProduct from "./CardProduct"
 
 /* eslint-disable react/prop-types */
-const ItemDetailContainer = ({data}) => {
-  console.log("Data en ItemDetailContainerÑ ", data)
-  
+const ItemDetailContainer = ({data}) => {   
 
   return (
     <>

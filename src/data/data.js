@@ -747,8 +747,7 @@ export const getItems = (idCategory) => {
   })
 }
 
-export const getItemById = (idItem) => {
-  console.log("IdItem Desde Data: ", idItem);
+export const getItemById = (idItem) => {  
   const itemId = parseInt(idItem); // Convertir a número
   const productSelected = idItem ? Data.find(product => product.id === itemId) : null;
 
