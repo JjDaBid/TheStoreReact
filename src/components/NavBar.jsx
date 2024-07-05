@@ -69,8 +69,11 @@ const NavBar = () => {
           to='/'
           className={({ isActive }) => isActive ? activeStyle : undefined }
           >Login</NavLink></li>
-        <li>
-          <CartWidget/>
+        <li><NavLink
+          to="/checkout"
+          >
+            <CartWidget/>
+          </NavLink>
         </li>
       </ul>
     </nav>

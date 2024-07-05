@@ -6,6 +6,7 @@ import NotFound from './pages/not-found/NotFound'
 import Contact from './pages/contact/Contact'
 import Product from './components/Product'
 import { ShopComponentContext } from './context/shopContext'
+import Checkout from './components/Checkout'
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -13,6 +14,7 @@ const AppRoutes = () => {
     { path: '/category/:idCategory', element: <Home/> }, 
     { path: '/item/:idItem', element: <Product/> },   
     { path: '/contact', element: <Contact/> },
+    { path: '/checkout', element: <Checkout /> },
     { path: '*', element: <NotFound/> }
   ])
   return routes;
@@ -25,8 +27,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes/>
         <div className='App'>
-          <NavBar />
-                
+          <NavBar />                
         </div>
       </BrowserRouter>
     </ShopComponentContext>
