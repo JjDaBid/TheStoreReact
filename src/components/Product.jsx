@@ -4,6 +4,8 @@ import { doc, getDoc } from "firebase/firestore";
 import { ShopContext } from "../context/shopContext";
 import Layout from "./layout";
 import { db } from "../firebase/client";
+import Toastify from 'toastify-js'
+import "toastify-js/src/toastify.css";
 
 const Product = () => {
   const [item, setItem] = useState(null);
@@ -35,10 +37,44 @@ const Product = () => {
     const existingProduct = cart.find((product) => product.id === item.id);
     const currentQuantityInCart = existingProduct ? existingProduct.quantity : 0;
     if (currentQuantityInCart + quantity > item.stock) {
-      alert(`No puedes agregar más de ${item.stock} unidades de este producto.`);
-      return;
+
+        Toastify({
+            text: `No puedes agregar más de ${item.stock} unidades de este producto.`,
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "center",
+            stopOnFocus: true,
+            style: {
+              background: "linear-gradient(to right, #F74F4F, #FF0000)",
+            },
+            onClick: function(){}
+          }).showToast();
+
+        return;
+
+
+
+
     }
     addToCart({ ...item, quantity });
+
+    Toastify({
+        text: `${quantity} ${item.title} agregado al carrito de compras`,
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "center",
+        stopOnFocus: true,
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
   };
 
   const handleQuantityChange = (delta) => {

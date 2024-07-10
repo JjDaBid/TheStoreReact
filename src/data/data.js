@@ -175,7 +175,7 @@ export const Data = [
         "category": "Chaquetas",
         "description": "Desata tu estilo rebelde con esta chaqueta en jean tipo torero, confeccionada en un denim rígido que emana autenticidad y carácter. Inspirada en la icónica silueta del torero, esta chaqueta presenta un diseño corto y ajustado que resalta la figura con un toque de audacia y elegancia urbana. \n El denim rígido no solo añade una sensación de durabilidad y resistencia, sino que también aporta un aspecto vintage y auténtico que nunca pasa de moda. Los detalles clásicos del estilo torero, como los bolsillos delanteros en ángulo y los botones metálicos acentuados, completan el look con un toque de autenticidad y estilo. \n Perfecta para combinar con tus vaqueros favoritos para un look total denim o para añadir un toque desenfadado a un vestido o falda, esta chaqueta en jean tipo torero es una pieza versátil y atemporal que te acompañará en cualquier aventura urbana con estilo y actitud. Domina las calles con confianza y estilo con esta chaqueta en jean que captura la esencia misma del espíritu rebelde y libre.",
         "image": "https://http2.mlstatic.com/D_NQ_NP_2X_961496-MCO74845576877_032024-F.webp",
-        "title": "Chaqueta En Jean Tipo Torero",
+        "title": "Chaqueta en Jean Tipo Torero",
         "price": 390000,
         "stock": 8
       },
@@ -291,7 +291,7 @@ export const Data = [
         "id": 33,
         "category": "Chaquetas",
         "description": "Prepárate para enfrentar los días fríos con estilo y funcionalidad con esta impresionante chaqueta acolchada de Chevignon, diseñada para mantenerte abrigado y a la moda en cualquier situación. Confeccionada con un acolchado suave y cálido, esta chaqueta ofrece una protección excepcional contra el frío, mientras que su diseño acolchado proporciona un aspecto moderno y urbano. \nLa capucha desmontable te brinda versatilidad y comodidad, permitiéndote adaptar la chaqueta a diferentes condiciones climáticas. Además, el estampado de camuflaje TOGS Print agrega un toque de estilo y originalidad, asegurando que destaques entre la multitud con un look único y llamativo. \nYa sea que te dirijas a la ciudad para una salida informal o te aventures al aire libre para disfrutar de actividades de invierno, esta chaqueta acolchada de Chevignon es la compañera perfecta para mantenerte abrigado y con estilo. Con su combinación de funcionalidad, moda y estilo urbano, esta chaqueta es una adición imprescindible a cualquier guardarropa de invierno. Atrévete a destacar y haz una declaración de moda con esta chaqueta acolchada que combina estilo y funcionalidad de una manera excepcional.",
-        "image": "https://chevignon.vtexassets.com/arquivos/ids/1422924-1200-auto?v=638427606172530000&width=1200&height=auto&aspect=true",
+        "image": "https://img01.ztat.net/article/spp-media-p1/5d8589cd2f47466dae4a7d7bf73c4f90/0a676ff986c2442aa4c264b6dbfc9ec9.jpg?imwidth=1800",
         "title": "Chaqueta Acolchada con Capucha - TOGS Print Camuflado",
         "price": 269000,
         "stock": 6
@@ -490,7 +490,7 @@ export const Data = [
       {
         "id": 55,
         "category": "Lenceria",
-        "description": "Bra triangulo en encaje sin arco varilla, es súper cómodo y perfecto para el día a día, da soporte al busto incluso en tallas grandes, cargadera ajustable, broche en la parte posterior y herrajes en oro rose",
+        "description": "Bra triangulo en encaje sin arco varilla, es súper cómodo y perfecto para el día a día, da soporte al busto incluso en tallas grandes, cargadera ajustable, broche en la parte posterior y herrajes en oro rosa",
         "image": "https://brunalingerie.com/cdn/shop/files/set_mia_rosa_03.jpg?v=1709046673",
         "title": "Top Mia Rosa",
         "price": 120000,

@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import Swal from 'sweetalert2';
 
 export const ShopContext = createContext();
 
@@ -38,12 +39,65 @@ export const ShopComponentContext = ({ children }) => {
     ));
   };
 
-  const removeFromCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+  const removeFromCart = async (id) => {
+    try {
+      const result = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'Esta acción eliminará el producto del carrito de compras.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        confirmButtonColor: '#FE001B',
+        cancelButtonText: 'Cancelar',
+        customClass: {
+          container: 'custom-alert-container',
+        },
+      });
+      if (result.isConfirmed) {
+        setCart(cart.filter((item) => item.id !== id));
+        await Swal.fire({
+          title: 'Eliminado',
+          text: 'El producto ha sido retirado del carrito de compras.',
+          icon: 'success',
+          confirmButtonColor: '#FE001B',
+        });
+      }
+    } catch (error) {
+      Swal.fire('Error', 'Ha ocurrido un error al retirar el producto.', 'error');
+    }
   };
 
+  const makePayment = async () => {
+    try {
+      const result = await Swal.fire({
+        title: '¿Confirma la realización del pago?',
+        text: 'Esta acción realizará el pago de su compra',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, confirmo',
+        confirmButtonColor: '#FE001B',
+        cancelButtonText: 'Cancelar',
+        customClass: {
+          container: 'custom-alert-container',
+        },
+      });
+
+      if (result.isConfirmed) { 
+        await Swal.fire({
+          title: 'Compra exitosa',
+          text: 'Su compra ha sido procesada satisfactoriamente',
+          icon: 'success',
+          confirmButtonColor: '#FE001B',
+        });
+        setCart([]); // Vaciar el carrito después del pago exitoso
+      }
+    } catch (error) {
+      Swal.fire('Error', 'Ha ocurrido un error al pagar el producto.', 'error');
+    }  
+  }
+
   return (
-    <ShopContext.Provider value={{ cart, totalItems, addToCart, updateCartItem, removeFromCart }}>
+    <ShopContext.Provider value={{ cart, totalItems, addToCart, updateCartItem, removeFromCart, makePayment }}>
       {children}
     </ShopContext.Provider>
   );

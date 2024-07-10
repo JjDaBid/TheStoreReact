@@ -27,7 +27,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes/>
         <div className='App'>
-          <NavBar />                
+          <NavBar />        
         </div>
       </BrowserRouter>
     </ShopComponentContext>

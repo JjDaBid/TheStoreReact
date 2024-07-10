@@ -2,15 +2,41 @@ import { useContext } from "react";
 import { ShoppingBagIcon } from '@heroicons/react/24/solid';
 import { ShopContext } from "../context/shopContext";
 import Layout from "./layout";
+import Toastify from 'toastify-js';
+import "toastify-js/src/toastify.css";
 
 const Checkout = () => {
-  const { cart, updateCartItem, removeFromCart } = useContext(ShopContext);
+  const { cart, updateCartItem, removeFromCart, makePayment } = useContext(ShopContext);
 
   const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   const handleQuantityChange = (id, quantity, stock) => {
-    if (quantity <= 0 || quantity > stock) return;
+    if (quantity <= 0) {
+      return;
+    } else if (quantity > stock) {
+      Toastify({
+        text: `No puedes agregar más de ${stock} unidades de este producto.`,
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "center",
+        stopOnFocus: true,
+        style: {
+          background: "linear-gradient(to right, #F74F4F, #FF0000)",
+        },
+        onClick: function () { }
+      }).showToast();
+      return;
+    }
+
     updateCartItem(id, quantity);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+    await makePayment(); // Llamar a la función makePayment para procesar el pago
   };
 
   return (
@@ -56,9 +82,41 @@ const Checkout = () => {
             ))}
             <div className="mt-6 items-center justify-center p-5 bg-slate-100">
               <h2 className="text-xl font-semibold">Total: ${totalPrice.toLocaleString()}</h2>
-              <button className="px-4 py-2 mt-3 bg-black text-white rounded">
-                Pagar
-              </button>
+            </div>
+
+            <div className="mt-6 bg-slate-100 p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4 text-center">Información del Cliente</h2>
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+                  <label className="mb-2 font-semibold text-right sm:text-left">Nombre:</label>
+                  <input type="text" className="p-2 rounded bg-gray-700 text-white col-span-2" placeholder="Nombre completo" required />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+                  <label className="mb-2 font-semibold text-right sm:text-left">Número de documento:</label>
+                  <input type="text" className="p-2 rounded bg-gray-700 text-white col-span-2" placeholder="Número de documento" required />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+                  <label className="mb-2 font-semibold text-right sm:text-left">Correo electrónico:</label>
+                  <input type="email" className="p-2 rounded bg-gray-700 text-white col-span-2" placeholder="Correo electrónico" required />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+                  <label className="mb-2 font-semibold text-right sm:text-left">Número de teléfono:</label>
+                  <input type="tel" className="p-2 rounded bg-gray-700 text-white col-span-2" placeholder="Número de teléfono" required />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+                  <label className="mb-2 font-semibold text-right sm:text-left">País:</label>
+                  <input type="text" className="p-2 rounded bg-gray-700 text-white col-span-2" placeholder="País" required />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+                  <label className="mb-2 font-semibold text-right sm:text-left">Ciudad:</label>
+                  <input type="text" className="p-2 rounded bg-gray-700 text-white col-span-2" placeholder="Ciudad" required />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+                  <label className="mb-2 font-semibold text-right sm:text-left">Dirección:</label>
+                  <input type="text" className="p-2 rounded bg-gray-700 text-white col-span-2" placeholder="Dirección" required />
+                </div>
+                <button type="submit" className="w-full py-3 bg-black text-white font-semibold rounded hover:bg-slate-900 hover:text-slate-300 transition-colors">Pagar</button>
+              </form>
             </div>
           </div>
         )}
