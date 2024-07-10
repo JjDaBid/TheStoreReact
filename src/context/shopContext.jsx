@@ -1,19 +1,34 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const ShopContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const ShopComponentContext = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    const total = cart.reduce((acc, item) => acc + item.quantity, 0);
+    setTotalItems(total);
+  }, [cart]);
 
   const addToCart = (product) => {
     const existingProduct = cart.find((item) => item.id === product.id);
     if (existingProduct) {
+      const newQuantity = existingProduct.quantity + product.quantity;
+      if (newQuantity > product.stock) {
+        alert(`No puedes agregar más de ${product.stock} unidades de este producto.`);
+        return;
+      }
       setCart(cart.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === product.id ? { ...item, quantity: newQuantity } : item
       ));
     } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
+      if (product.quantity > product.stock) {
+        alert(`No puedes agregar más de ${product.stock} unidades de este producto.`);
+        return;
+      }
+      setCart([...cart, product]);
     }
   };
 
@@ -28,7 +43,7 @@ export const ShopComponentContext = ({ children }) => {
   };
 
   return (
-    <ShopContext.Provider value={{ cart, addToCart, updateCartItem, removeFromCart }}>
+    <ShopContext.Provider value={{ cart, totalItems, addToCart, updateCartItem, removeFromCart }}>
       {children}
     </ShopContext.Provider>
   );
