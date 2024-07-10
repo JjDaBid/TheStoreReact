@@ -89,7 +89,7 @@ export const ShopComponentContext = ({ children }) => {
           icon: 'success',
           confirmButtonColor: '#FE001B',
         });
-        setCart([]); // Vaciar el carrito después del pago exitoso
+        setCart([]);
       }
     } catch (error) {
       Swal.fire('Error', 'Ha ocurrido un error al pagar el producto.', 'error');

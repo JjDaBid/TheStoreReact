@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { ShopContext } from "../context/shopContext";
@@ -10,6 +10,7 @@ import "toastify-js/src/toastify.css";
 const Product = () => {
   const [item, setItem] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const toastShownRef = useRef(false);
   const { idItem } = useParams();
   const { cart, addToCart } = useContext(ShopContext);
 
@@ -37,27 +38,24 @@ const Product = () => {
     const existingProduct = cart.find((product) => product.id === item.id);
     const currentQuantityInCart = existingProduct ? existingProduct.quantity : 0;
     if (currentQuantityInCart + quantity > item.stock) {
-
-        Toastify({
-            text: `No puedes agregar más de ${item.stock} unidades de este producto.`,
-            duration: 3000,
-            destination: "https://github.com/apvarun/toastify-js",
-            newWindow: true,
-            close: true,
-            gravity: "top",
-            position: "center",
-            stopOnFocus: true,
-            style: {
-              background: "linear-gradient(to right, #F74F4F, #FF0000)",
-            },
-            onClick: function(){}
-          }).showToast();
-
+        if (!toastShownRef.current) {
+          toastShownRef.current = true;
+          Toastify({
+              text: `No puedes agregar más de ${item.stock} unidades de este producto.`,
+              duration: 3000,
+              destination: "https://github.com/apvarun/toastify-js",
+              newWindow: true,
+              close: true,
+              gravity: "top",
+              position: "center",
+              stopOnFocus: true,
+              style: {
+                background: "linear-gradient(to right, #F74F4F, #FF0000)",
+              },
+              onClick: function(){}
+            }).showToast();
+        }
         return;
-
-
-
-
     }
     addToCart({ ...item, quantity });
 
@@ -73,15 +71,36 @@ const Product = () => {
         style: {
           background: "linear-gradient(to right, #00b09b, #96c93d)",
         },
-        onClick: function(){} // Callback after click
+        onClick: function(){}
       }).showToast();
   };
 
   const handleQuantityChange = (delta) => {
     setQuantity((prevQuantity) => {
       const newQuantity = prevQuantity + delta;
-      if (newQuantity < 1) return 1;
-      if (newQuantity > item.stock) return item.stock;
+      if (newQuantity < 1) {
+        return 1;
+      } else if (newQuantity > item.stock) {
+        if (!toastShownRef.current) {
+          toastShownRef.current = true;
+          Toastify({
+            text: `No puedes agregar más de ${item.stock} unidades de este producto.`,
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "center",
+            stopOnFocus: true,
+            style: {
+              background: "linear-gradient(to right, #F74F4F, #FF0000)",
+            },
+            onClick: function () {},
+          }).showToast();          
+        }        
+        return item.stock;        
+      }        
+      toastShownRef.current = false;
       return newQuantity;
     });
   };
